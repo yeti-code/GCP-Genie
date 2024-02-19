@@ -14,7 +14,7 @@ A bash tool that looks for vulnerable subdomains for takeover, via unmanaged A r
 
 # Required Tools
 
-1.) Subfinder
-2.) HTTPX
-3.) anew
-4.) dnsutils
+- Subfinder
+- HTTPX
+- anew
+- dnsutils

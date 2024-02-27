@@ -21,3 +21,8 @@ A bash tool that looks for vulnerable subdomains for takeover, via unmanaged A r
 # Optional Tools
 
 - Google Cloud CLI Installer (Depends on your setup.)
+- Notify - Send messages via WebHooks to Discord, Slack, or Telegram.
+
+# Setup script
+
+I have included a "setup.sh" file in the GitHub repo. This can be run if you do not want to manually install the tools or Go. Beware though, depending on your setup, the script may not work perfectly. So please "RTFM", and just modify the script as you see fit.

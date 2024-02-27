@@ -72,7 +72,6 @@ then
         if [[ "$gen_ip" ]]
         then
                 echo "++Found a matching IP for the target at $target_IPS"
-                # which has the subdomain, $i++"
         exit 0
         else
                 echo "Deleting the newly generated VM instance with IP: $ip_response >>> Let's try again.\n\n"

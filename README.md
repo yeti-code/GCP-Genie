@@ -17,14 +17,39 @@ A bash tool that looks for vulnerable subdomains for takeover, via unmanaged A r
 - anew - https://github.com/tomnomnom/anew
 - dnsutils - sudo apt install dnsutils
 - Go - https://go.dev/dl/ (DO NOT INSTALL via APT package manager. Go to the go.dev site and follow the install instructions)
+- Google Cloud CLI Installer (Depends on your setup.)
 
 # Optional Tools
-
-- Google Cloud CLI Installer (Depends on your setup.)
 - Notify - Send messages via WebHooks to Discord, Slack, or Telegram.
 
-# Setup script
+# WARNING
 
-I have included a "setup.sh" file in the GitHub repo. This can be run if you do not want to manually install the tools or Go. Beware though, depending on your setup, the script may not work perfectly. So please "RTFM", and just modify the script as you see fit.
+Please make sure that the go command and all other tools that were installed via the setup.sh script can be run in your #HOME directory without needing to use the full relative path of the go binary, or the tool binaries.
 
-I recommend exiting the current shell or logging off after you modify any .bashrc or .profile files.
+I recommend adding the paths of the installed tools to
+
+~~~
+#HOME/.profile
+~~~
+
+You can run these commands in your terminal to add the $PATH variables for the go install and the go tools.
+
+For Go install:
+~~~
+ echo 'export PATH=$PATH:/usr/local/go/bin' >> $HOME/.bashrc
+~~~
+
+Installed tools:
+~~~
+ echo 'export PATH=$PATH:$HOME/go/bin' >> $HOME/.bashrc
+~~~
+
+# Setup Instructions
+
+1.) git clone
+2.) chmod +x setup.sh target_setup.sh gcp-genie.sh
+3.) ./setup.sh
+4.) ./target_setup.sh --target-tld <target here>
+5.) CTRL + c to enter back into the shell. The script has become a background process so that you may safely exit the SSH session, or close the terminal.
+
+You can <ps aux> to check the Process or kill it later if needed.

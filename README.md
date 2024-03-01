@@ -12,12 +12,19 @@ A bash tool that looks for vulnerable subdomains for takeover, via unmanaged A r
 
 # Required Tools
 
+-Git - 
+~~~
+sudo apt install git
+~~~
+- Dnsutils -
+~~~
+- sudo apt install dnsutils
+~~~
+- Google Cloud CLI Installer (Depends on your setup.)
+- Go - https://go.dev/dl/ (DO NOT INSTALL via APT package manager. Go to the go.dev site and follow the install instructions)
 - Subfinder - https://github.com/projectdiscovery/subfinder?tab=readme-ov-file#installation
 - HTTPX - https://github.com/projectdiscovery/httpx?tab=readme-ov-file#installation-instructions
 - anew - https://github.com/tomnomnom/anew
-- dnsutils - sudo apt install dnsutils
-- Go - https://go.dev/dl/ (DO NOT INSTALL via APT package manager. Go to the go.dev site and follow the install instructions)
-- Google Cloud CLI Installer (Depends on your setup.)
 
 # Optional Tools
 - Notify - Send messages via WebHooks to Discord, Slack, or Telegram.

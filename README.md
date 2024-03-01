@@ -12,13 +12,13 @@ A bash tool that looks for vulnerable subdomains for takeover, via unmanaged A r
 
 # Required Tools
 
--Git - 
+-Git 
 ~~~
 sudo apt install git
 ~~~
-- Dnsutils -
+- Dnsutils
 ~~~
-- sudo apt install dnsutils
+sudo apt install dnsutils
 ~~~
 - Google Cloud CLI Installer (Depends on your setup.)
 - Go - https://go.dev/dl/ (DO NOT INSTALL via APT package manager. Go to the go.dev site and follow the install instructions)

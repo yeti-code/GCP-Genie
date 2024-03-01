@@ -48,7 +48,7 @@ Installed tools:
 
 1.) 
 ~~~
-git clone
+git clone https://github.com/yeti-code/GCP-Genie.git
 ~~~
 2.) 
 ~~~

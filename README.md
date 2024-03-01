@@ -36,12 +36,12 @@ You can run these commands in your terminal to add the $PATH variables for the g
 
 For Go install:
 ~~~
- echo 'export PATH=$PATH:/usr/local/go/bin' >> $HOME/.bashrc
+ echo 'export PATH=$PATH:/usr/local/go/bin' >> $HOME/.profile
 ~~~
 
 Installed tools:
 ~~~
- echo 'export PATH=$PATH:$HOME/go/bin' >> $HOME/.bashrc
+ echo 'export PATH=$PATH:$HOME/go/bin' >> $HOME/.profile
 ~~~
 
 # Setup Instructions

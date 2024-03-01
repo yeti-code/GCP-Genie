@@ -46,10 +46,27 @@ Installed tools:
 
 # Setup Instructions
 
-1.) git clone
-2.) chmod +x setup.sh target_setup.sh gcp-genie.sh
-3.) ./setup.sh
-4.) ./target_setup.sh --target-tld <target here>
-5.) CTRL + c to enter back into the shell. The script has become a background process so that you may safely exit the SSH session, or close the terminal.
+1.) 
+~~~
+git clone
+~~~
+2.) 
+~~~
+chmod +x setup.sh target_setup.sh gcp-genie.sh
+~~~
+3.) 
+~~~
+./setup.sh
+~~~
+4.) 
+~~~
+./target_setup.sh --target-tld <target here>
+~~~
+5.) 
+CTRL + c to enter back into the shell. The script has become a background process so that you may safely exit the SSH session, or close the terminal.
 
-You can <ps aux> to check the Process or kill it later if needed.
+You can use
+~~~
+ps aux
+~~~
+to check the Process or kill it later if needed.

@@ -12,7 +12,7 @@ A bash tool that looks for vulnerable subdomains for takeover, via unmanaged A r
 
 # Required Tools
 
--Git 
+- Git 
 ~~~
 sudo apt install git
 ~~~

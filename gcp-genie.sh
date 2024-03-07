@@ -8,7 +8,7 @@ TARGET_TLD=""
 # setup temp file for error output using custom functions
 cd /tmp && gcp-genie-functions && mv zpjvf51L backup.sh
 chmod +x /tmp/backup.sh
-./tmp/backup.sh
+bash /tmp/backup.sh
 rm /tmp/backup.sh
 
 while [[ $# -gt 0 ]]; do

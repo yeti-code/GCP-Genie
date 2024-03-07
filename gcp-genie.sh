@@ -1,8 +1,8 @@
 #!/bin/bash
 # Update needed tools before script execution
 
-subfinder -update
-httpx -update
+~/go/bin/subfinder -update
+~/go/bin/httpx -update
 
 TARGET_TLD=""
 # setup temp file for error output using custom functions
@@ -37,7 +37,7 @@ $kworker_func2
 $kworker_func3
 $kworker_func4
 
-subfinder -provider-config /$HOME/.config/subfinder/provider-config.yaml -d $TARGET_TLD | anew /$HOME/$TARGET_TLD/$TARGET_TLD.txt > /$HOME/$TARGET_TLD/$TARGET_TLD-added-lines.txt
+~/go/bin/subfinder -provider-config /$HOME/.config/subfinder/provider-config.yaml -d $TARGET_TLD | anew /$HOME/$TARGET_TLD/$TARGET_TLD.txt > /$HOME/$TARGET_TLD/$TARGET_TLD-added-lines.txt
 wordcount=$(wc -l < /$HOME/$TARGET_TLD/$TARGET_TLD-added-lines.txt)
 if [[ $wordcount -ge 1 ]]
 then

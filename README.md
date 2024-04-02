@@ -45,6 +45,14 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 ~~~
 
+## Before you run the following commands...
+
+### Configure the environment that will utilize the GCP functions with the proper Project ID
+
+~~~
+gcloud config set project <PROJECT-ID>
+~~~
+
 # Setup Instructions
 
 1.) 

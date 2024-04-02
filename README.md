@@ -46,7 +46,7 @@ For Go install:
  echo 'export PATH=$PATH:/usr/local/go/bin' >> $HOME/.profile
 ~~~
 
-Installed tools:
+Installed tools: Run this AFTER you have run the setup.sh script, and before executing the target or gcp-shenie script files which utilize the installed go tools. Assuming you have never installed any go tools before.
 ~~~
  echo 'export PATH=$PATH:$HOME/go/bin' >> $HOME/.profile
 ~~~

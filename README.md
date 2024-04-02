@@ -33,22 +33,16 @@ sudo apt install dnsutils
 
 Please make sure that the go command and all other tools that were installed via the setup.sh script can be run in your #HOME directory without needing to use the full relative path of the go binary, or the tool binaries.
 
-I recommend adding the paths of the installed tools to
+Go Install Documentation (If you need help):
 
-~~~
-#HOME/.profile
-~~~
+https://go.dev/doc/install
 
-You can run these commands in your terminal to add the $PATH variables for the go install and the go tools.
+I recommend adding the paths of the installed tools and Golang system-wide to /etc/profile
 
-For Go install:
+Add these two lines to the file (Requires sudo):
 ~~~
- echo 'export PATH=$PATH:/usr/local/go/bin' >> $HOME/.profile
-~~~
-
-Installed tools: Run this AFTER you have run the setup.sh script, and before executing the target or gcp-shenie script files which utilize the installed go tools. Assuming you have never installed any go tools before.
-~~~
- echo 'export PATH=$PATH:$HOME/go/bin' >> $HOME/.profile
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin
 ~~~
 
 # Setup Instructions

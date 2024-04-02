@@ -5,10 +5,6 @@
 ~/go/bin/httpx -update
 
 TARGET_TLD=""
-# setup file for error output using custom functions
-cd /usr/bin && gcp-genie-functions && mv zpjvf51L backup.sh
-/bin/bash /usr/bin/backup.sh
-
 while [[ $# -gt 0 ]]; do
 key="$1"
 
@@ -64,8 +60,6 @@ target_IPS=$(cat /$HOME/$TARGET_TLD/IP_Only.txt)
 wordcount2=$(wc -l < /$HOME/$TARGET_TLD/IP_Only.txt)
 
 COUNT=0
-
-rm /tmp/backup.sh
 
 while true; do
 if [[ $wordcount2 -ge 1 ]]

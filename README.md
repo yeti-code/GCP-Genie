@@ -20,7 +20,7 @@ sudo apt install git
 ~~~
 sudo apt install dnsutils
 ~~~
-- Google Cloud CLI Installer (Depends on your setup.)
+- Google Cloud CLI Installer API Functions (CREATE, DELETE, and DESCRIBE)
 - Go - https://go.dev/dl/ (DO NOT INSTALL via APT package manager. Go to the go.dev site and follow the install instructions)
 - Subfinder - https://github.com/projectdiscovery/subfinder?tab=readme-ov-file#installation
 - HTTPX - https://github.com/projectdiscovery/httpx?tab=readme-ov-file#installation-instructions

@@ -48,8 +48,7 @@ then
                 echo "Found potential candidate(s) for Subdomain Takeover: "
                 echo "$dig,$i" >> /$HOME/$TARGET_TLD/potential_candidates.txt
         else
-                echo "No IP addresses are pointing to any Google assets" >> /$HOME/$TARGET_TLD/notvulnerable.txt
-		exit 0
+                echo "No IP addresses are pointing to any Google assets" >/dev/null 2>&1
         fi
 else
         echo "No IP addresses returned" >/dev/null 2>&1

@@ -52,4 +52,4 @@ mkdir /$HOME/$TARGET_TLD
 
 ~/go/bin/subfinder -provider-config /$HOME/.config/subfinder/provider-config.yaml -d $TARGET_TLD -o /$HOME/$TARGET_TLD/$TARGET_TLD.txt
 
-nohup bash gcp-genie.sh --target-tld $TARGET_TLD &
+nohup /bin/bash gcp-genie.sh --target-tld $TARGET_TLD &

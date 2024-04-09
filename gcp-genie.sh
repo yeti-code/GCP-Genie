@@ -6,7 +6,25 @@ TARGET_TLD=""
 PROJECT=""
 ZONE=""
 
+DIR=$(pwd)
 
+# Parse Command-Line Args
+while getopts ":t:p:z:" opt; do
+    case "${opt}" in
+        t)
+            TARGET_TLD=${OPTARG}
+            ;;
+        p)
+            PROJECT=${OPTARG}
+            ;;
+        z)
+            ZONE=${OPTARG}
+            ;;
+        *)
+            handle_exceptions
+            ;;
+    esac
+done
 
 # Run subfinder to check for new subdomains if any...
 ~/go/bin/subfinder -provider-config /"$HOME"/.config/subfinder/provider-config.yaml -d "$TARGET_TLD" | anew /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD".txt > /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD"-added-lines.txt

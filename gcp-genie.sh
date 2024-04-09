@@ -1,27 +1,6 @@
 #!/bin/bash
 ~/go/bin/httpx -update
 
-DIR=$(pwd)
-TARGET_TLD=""
-while [[ $# -gt 0 ]]; do
-key="$1"
-
-case $key in
-	--target-tld)
-      TARGET_TLD="$2"
-      shift
-      shift
-      ;;
-    -h|--help)
-      display_help
-      ;;
-    *)  # Unknown option
-      echo "Unknown option: $1"
-      exit 1
-      ;;
-  esac
-done
-
 # Run subfinder to check for new subdomains if any...
 ~/go/bin/subfinder -provider-config /"$HOME"/.config/subfinder/provider-config.yaml -d "$TARGET_TLD" | anew /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD".txt > /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD"-added-lines.txt
 wordcount=$(wc -l < /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD"-added-lines.txt)

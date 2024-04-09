@@ -1,6 +1,13 @@
 #!/bin/bash
 ~/go/bin/httpx -update
 
+# Initialize Variables
+TARGET_TLD=""
+PROJECT=""
+ZONE=""
+
+
+
 # Run subfinder to check for new subdomains if any...
 ~/go/bin/subfinder -provider-config /"$HOME"/.config/subfinder/provider-config.yaml -d "$TARGET_TLD" | anew /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD".txt > /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD"-added-lines.txt
 wordcount=$(wc -l < /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD"-added-lines.txt)

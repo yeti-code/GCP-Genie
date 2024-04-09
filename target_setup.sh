@@ -1,55 +1,55 @@
 #!/bin/bash
+# Make sure required tools are up-to-date before runtime
 ~/go/bin/subfinder -update
 ~/go/bin/httpx -update
 
-# Set Default Values
+# Initialize Variables
 TARGET_TLD=""
+PROJECT=""
+ZONE=""
+
+DIR=$(pwd)
+
+# Generic Error to stdout message
+handle_exceptions() {
+    echo "An error occurred while processing the options."
+    exit 1
+}
 
 # Function to display usage instructions
 display_help() {
-    echo "Usage: ./target_setup.sh [OPTIONS]"
-    echo "Options:"
-    echo " --target-tld       Specifify the TLD to target"
-    echo " -h, --help      Display the help message"
-    echo ""
-    exit 0
+    echo "Usage: $0 [-t <foo.com>] [-p <your-project-id>] [-z <us-south1-a>]" 1>&2
+    exit 1
 }
 
 # Parse Command-Line Args
-
-if [[ $# -eq 0 ]]; then
-    printf "\nMissing required flags\n\n"
-    display_help
-fi 
-
-while [[ $# -gt 0 ]]; do
-key="$1"
-
-case $key in
-	--target-tld)
-      TARGET_TLD="$2"
-      shift
-      shift
-      ;;
-    -h|--help)
-      display_help
-      ;;
-    *)  # Unknown option
-      echo "Unknown option: $1"
-      exit 1
-      ;;
-  esac
+while getopts ":t:p:z:" opt; do
+    case "${opt}" in
+        t)
+            TARGET_TLD=${OPTARG}
+            ;;
+        p)
+            PROJECT=${OPTARG}
+            ;;
+        z)
+            ZONE=${OPTARG}
+            ;;
+        *)
+            handle_exceptions
+            ;;
+    esac
 done
 
-# Check if any required flag is missing
-if [[ -z "$TARGET_TLD" ]]; then
-  printf "\nMissing required flag(s)!\n\n"
-  display_help
+shift $((OPTIND-1))
+
+# Check all flags are set
+if [ -z "${TARGET_TLD}" ] || [ -z "${PROJECT}" ] || [ -z "${ZONE}" ]; then
+    usage
 fi
 
+mkdir /"$DIR"/output
+mkdir /"$DIR"/output/"$TARGET_TLD"
 
-mkdir /$HOME/$TARGET_TLD
+~/go/bin/subfinder -provider-config /"$HOME"/.config/subfinder/provider-config.yaml -d "$TARGET_TLD" -o /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD".txt
 
-~/go/bin/subfinder -provider-config /$HOME/.config/subfinder/provider-config.yaml -d $TARGET_TLD -o /$HOME/$TARGET_TLD/$TARGET_TLD.txt
-
-nohup /bin/bash gcp-genie.sh --target-tld $TARGET_TLD &
+nohup /bin/bash gcp-genie.sh &

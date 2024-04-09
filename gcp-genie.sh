@@ -97,7 +97,7 @@ then
                 echo "++Found a matching IP for the target at "$target_IPS""
         exit 0
         else
-                echo Deleting the newly generated VM instance with IP: "$ip_response" >>> Trying again.\n\n"
+                echo "Deleting the newly generated VM instance with IP: "$ip_response" >>> Trying again.\n\n"
                 gcloud compute instances delete subdomain-takeovers-"$TARGET_TLD" --zone="$ZONE" --verbosity=none --quiet > /dev/null 2>&1
                 sleep 2
         fi

@@ -51,4 +51,4 @@ mkdir /"$DIR"/output/"$TARGET_TLD"
 
 ~/go/bin/subfinder -provider-config /"$HOME"/.config/subfinder/provider-config.yaml -d "$TARGET_TLD" -o /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD".txt
 
-nohup /bin/bash gcp-genie.sh &
+nohup ./gcp-genie.sh &

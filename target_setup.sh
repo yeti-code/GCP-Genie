@@ -1,7 +1,6 @@
 #!/bin/bash
 # Make sure required tools are up-to-date before runtime
 ~/go/bin/subfinder -update
-~/go/bin/httpx -update
 
 # Initialize Variables
 TARGET_TLD=""
@@ -18,7 +17,7 @@ handle_exceptions() {
 
 # Function to display usage instructions
 display_help() {
-    echo "Usage: $0 [-t <foo.com>] [-p <your-project-id>] [-z <us-south1-a>]" 1>&2
+    echo "Usage: "$0" [-t <foo.com>] [-p <your-project-id>] [-z <us-south1-a>]" 1>&2
     exit 1
 }
 

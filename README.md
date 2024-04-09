@@ -73,7 +73,7 @@ chmod +x setup.sh target_setup.sh gcp-genie.sh
 ~~~
 5.) 
 ~~~
-./target_setup.sh --target-tld <target here>
+./target_setup.sh -t <foo.com> -p <your-gcp-project-id> -z <instance-zone> (Ex: us-south1-a)
 ~~~
 6.) 
 CTRL + c to enter back into the shell. The script has become a background process so that you may safely exit the SSH session, or close the terminal.

@@ -1,6 +1,7 @@
 #!/bin/bash
 ~/go/bin/httpx -update
 
+DIR=$(pwd)
 TARGET_TLD=""
 while [[ $# -gt 0 ]]; do
 key="$1"

@@ -1,7 +1,4 @@
 #!/bin/bash
-# Update needed tools before script execution
-
-~/go/bin/subfinder -update
 ~/go/bin/httpx -update
 
 TARGET_TLD=""

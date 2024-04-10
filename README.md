@@ -71,11 +71,16 @@ chmod +x setup.sh target_setup.sh gcp-genie.sh
 ~~~
 ./setup.sh
 ~~~
-5.) 
+5.) Run Subfinder at least once to generate your provider-config.yaml file. This is where API keys are stored for tool use. You can find the config at...
+~~~
+$HOME/.config/subfinder
+~~~
+
+6.) 
 ~~~
 ./target_setup.sh -t <foo.com> -p <your-gcp-project-id> -z <instance-zone> (Ex: us-south1-a)
 ~~~
-6.) 
+7.) 
 CTRL + c to enter back into the shell. The script has become a background process so that you may safely exit the SSH session, or close the terminal.
 
 You can use

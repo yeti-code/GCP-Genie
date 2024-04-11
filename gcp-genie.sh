@@ -56,7 +56,6 @@ then
 else
         echo "No IP addresses returned" >/dev/null 2>&1
 fi
-done
 
 grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" /"$DIR"/output/"$TARGET_TLD"/potential_candidates.txt > /"$DIR"/output/"$TARGET_TLD"/IP_Only.txt
 target_IPS=$(cat /"$DIR"/output/"$TARGET_TLD"/IP_Only.txt)

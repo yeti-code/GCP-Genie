@@ -37,18 +37,19 @@ else
         echo "Doing nothing" >/dev/null 2>&1
 fi
 
-httpx=$(httpx -l /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD".txt -probe -ip | grep -i "failed" | sed -E 's/^\s*.*:\/\///g' | cut -f1 -d"[")
+httpx -l /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD".txt -probe -ip | grep -i "failed" | sed -E 's/^\s*.*:\/\///g' | cut -f1 -d"[" >> /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD".httpx.out
 
-for i in "$httpx"
-do
-dig=$(dig +short "$i")
-if [[ "$dig" ]]
+dig_out=$(dig -f /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD".httpx.out +short)
+
+
+
+if [[ "$dig_out" ]]
 then
-        nslookup=$(nslookup "$dig" | grep -i "googleusercontent")
-        if [[ "$nslookup" && "$dig" ]]
+        nslookup=$(nslookup "$dig_out" | grep -i "googleusercontent")
+        if [[ "$nslookup" && "$dig_out" ]]
         then
                 echo "Found potential candidate(s) for Subdomain Takeover: "
-                echo "$dig,$i" >> /"$DIR"/output/"$TARGET_TLD"/potential_candidates.txt
+                echo "$dig" >> /"$DIR"/output/"$TARGET_TLD"/potential_candidates.txt
         else
                 echo "No IP addresses are pointing to any Google assets" >/dev/null 2>&1
         fi

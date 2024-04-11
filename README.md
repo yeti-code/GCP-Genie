@@ -23,7 +23,7 @@ sudo apt install dnsutils
 - Google Cloud CLI Installer API Functions (CREATE, DELETE, and DESCRIBE)
 - Go - https://go.dev/dl/ (DO NOT INSTALL via APT package manager. Go to the go.dev site and follow the install instructions)
 
-To remove older go isntalls and re-install:
+To remove older go installs and re-install:
 
 ~~~
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.2.linux-amd64.tar.gz

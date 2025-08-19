@@ -51,10 +51,10 @@ then
                 echo "Found potential candidate(s) for Subdomain Takeover: "
                 echo "$dig_out" >> /"$DIR"/output/"$TARGET_TLD"/potential_candidates.txt
         else
-                echo "No IP addresses are pointing to any Google assets" >/dev/null 2>&1
+                echo "No IP addresses are pointing to any Google assets"
         fi
 else
-        echo "No IP addresses returned" >/dev/null 2>&1
+        echo "No IP addresses returned"
 fi
 
 grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" /"$DIR"/output/"$TARGET_TLD"/potential_candidates.txt > /"$DIR"/output/"$TARGET_TLD"/IP_Only.txt

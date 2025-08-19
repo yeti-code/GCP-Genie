@@ -49,7 +49,7 @@ then
         if [[ "$nslookup" && "$dig_out" ]]
         then
                 echo "Found potential candidate(s) for Subdomain Takeover: "
-                echo "$dig" >> /"$DIR"/output/"$TARGET_TLD"/potential_candidates.txt
+                echo "$dig_out" >> /"$DIR"/output/"$TARGET_TLD"/potential_candidates.txt
         else
                 echo "No IP addresses are pointing to any Google assets" >/dev/null 2>&1
         fi

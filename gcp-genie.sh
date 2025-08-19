@@ -1,4 +1,7 @@
 #!/bin/bash
+#By: Joshua T. Buxton
+#If you are reading this, you're pretty cool
+
 ~/go/bin/httpx -update
 
 # Initialize Variables

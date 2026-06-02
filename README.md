@@ -12,22 +12,78 @@ A bash tool that looks for vulnerable subdomains for takeover, via unmanaged A r
 
 # Required Tools
 
-- Git 
+## Git
+
+**Debian/Ubuntu**
 ~~~
 sudo apt install git
 ~~~
-- Dnsutils
+**Arch Linux / Manjaro**
+~~~
+sudo pacman -S git
+~~~
+
+## Dnsutils (dig, nslookup)
+
+**Debian/Ubuntu**
 ~~~
 sudo apt install dnsutils
 ~~~
-- Google Cloud CLI Installer API Functions (CREATE, DELETE, and DESCRIBE)
-- Go - https://go.dev/dl/ (DO NOT INSTALL via APT package manager. Go to the go.dev site and follow the install instructions)
+**Arch Linux / Manjaro**
+~~~
+sudo pacman -S bind-tools
+~~~
 
-To remove older go installs and re-install:
+## Google Cloud CLI
+Provides the `gcloud` command with CREATE, DELETE, and DESCRIBE API functions.
 
+**Debian/Ubuntu** — follow the official instructions:
+https://cloud.google.com/sdk/docs/install#deb
+
+**Arch Linux / Manjaro** — install via AUR (requires yay or paru):
+~~~
+yay -S google-cloud-cli
+~~~
+or
+~~~
+paru -S google-cloud-cli
+~~~
+
+## Go
+
+**Recommended for all distros:** Download directly from https://go.dev/dl/ and follow the install instructions. Do NOT install Go via apt or pacman — package manager versions are often outdated and can cause tool compatibility issues.
+
+To remove an older Go install and reinstall from a downloaded tarball:
 ~~~
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.2.linux-amd64.tar.gz
 ~~~
+
+## curl
+
+**Debian/Ubuntu**
+~~~
+sudo apt install curl
+~~~
+**Arch Linux / Manjaro**
+~~~
+sudo pacman -S curl
+~~~
+
+## Python 3
+
+Used to match candidate IPs against GCP's published IP ranges to auto-detect the correct region.
+
+**Debian/Ubuntu**
+~~~
+sudo apt install python3
+~~~
+**Arch Linux / Manjaro**
+~~~
+sudo pacman -S python
+~~~
+
+## Go-based Tools
+The following tools are installed automatically by `setup.sh` via `go install`:
 
 - Subfinder - https://github.com/projectdiscovery/subfinder?tab=readme-ov-file#installation
 - HTTPX - https://github.com/projectdiscovery/httpx?tab=readme-ov-file#installation-instructions
@@ -38,7 +94,7 @@ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.2.linux-amd64.tar.gz
 
 # WARNING
 
-Please make sure that the go command and all other tools that were installed via the setup.sh script can be run in your #HOME directory without needing to use the full relative path of the go binary, or the tool binaries.
+Please make sure that the go command and all other tools that were installed via the setup.sh script can be run in your $HOME directory without needing to use the full relative path of the go binary, or the tool binaries.
 
 Go Install Documentation (If you need help):
 
@@ -85,7 +141,7 @@ $HOME/.config/subfinder
 
 6.) 
 ~~~
-./target_setup.sh -t <foo.com> -p <your-gcp-project-id> -z <instance-zone> (Ex: us-south1-a)
+./target_setup.sh -t <foo.com> -p <your-gcp-project-id> -z <fallback-zone> (Ex: us-south1-a)
 ~~~
 7.) 
 CTRL + c to enter back into the shell. The script has become a background process so that you may safely exit the SSH session, or close the terminal.
@@ -95,5 +151,3 @@ You can use
 ps aux
 ~~~
 to check the Process or kill it later if needed.
-# GCP-Genie-work-in-prg
-# GCP-Genie-work-in-prg

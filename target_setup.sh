@@ -17,7 +17,8 @@ handle_exceptions() {
 
 # Function to display usage instructions
 display_help() {
-    echo "Usage: "$0" [-t <foo.com>] [-p <your-project-id>] [-z <us-south1-a>]" 1>&2
+    echo "Usage: $0 -t <foo.com> -p <your-project-id> [-z <fallback-zone>]" 1>&2
+    echo "  -z is optional. The script auto-detects the GCP region from the candidate IP." 1>&2
     exit 1
 }
 
@@ -41,14 +42,17 @@ done
 
 shift $((OPTIND-1))
 
-# Check all flags are set
-if [ -z "${TARGET_TLD}" ] || [ -z "${PROJECT}" ] || [ -z "${ZONE}" ]; then
-    usage
+# -t and -p are required; -z is optional (used as fallback if region auto-detection fails)
+if [ -z "${TARGET_TLD}" ] || [ -z "${PROJECT}" ]; then
+    display_help
 fi
 
-mkdir /"$DIR"/output
-mkdir /"$DIR"/output/"$TARGET_TLD"
+mkdir -p "$DIR/output"
+mkdir -p "$DIR/output/$TARGET_TLD"
 
-~/go/bin/subfinder -provider-config /"$HOME"/.config/subfinder/provider-config.yaml -d "$TARGET_TLD" -o /"$DIR"/output/"$TARGET_TLD"/"$TARGET_TLD".txt
+~/go/bin/subfinder -provider-config "$HOME/.config/subfinder/provider-config.yaml" -d "$TARGET_TLD" -o "$DIR/output/$TARGET_TLD/$TARGET_TLD.txt"
 
-nohup /bin/bash gcp-genie.sh -t "$TARGET_TLD" -p "$PROJECT" -z "$ZONE" &
+ZONE_ARG=""
+[[ -n "$ZONE" ]] && ZONE_ARG="-z $ZONE"
+
+nohup /bin/bash "$DIR/gcp-genie.sh" -t "$TARGET_TLD" -p "$PROJECT" $ZONE_ARG &
